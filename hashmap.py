@@ -1,6 +1,25 @@
+'''
+    Hashmap
+    An implementation of fixed-size hashmap based on Python primitive types
+    and separate chaining. Heavily inspired by MIT opencourseware and
+    Java's Hashmap implementation.
+
+    Example:
+        from hashmap from Hashmap
+        my_hash_table = Hashmap(15)
+        my_hash_table.set("foo", "bar")
+        bar = my_hash_table.get("foo")      # "bar"
+        my_hash_table.set("foo", "hoe")
+        hoe = my_hash_table.delete("foo")   # "hoe"
+        load_factor = my_hash_table.load()  #
+'''
 from __future__ import division
 
+
 class Hashmap(object):
+    '''
+
+    '''
 
     def __init__(self, size):
         if not isinstance(size, int) or size <= 0:
@@ -29,8 +48,14 @@ class Hashmap(object):
         return idx, node_idx
 
     def set(self, key, value):
+        if self.count == self.size:
+            return False
         bucket_idx, node_idx = self.__search(key)
-        self.table[bucket_idx][node_idx] = (key, value)
+        if node_idx:
+            self.table[bucket_idx][node_idx] = (key, value)  # overwrite
+        else:
+            self.table[bucket_idx].append((key, value))  # add new value
+        self.count += 1
         return True
 
     def get(self, key):
@@ -45,6 +70,7 @@ class Hashmap(object):
             return None
         value = self.table[bucket_idx][node_idx]
         del self.table[bucket_idx][node_idx]
+        self.count -= 1
         return value
 
     def load(self):
