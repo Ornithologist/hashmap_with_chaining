@@ -1,5 +1,5 @@
 # hashmap_with_chaining
-A fixed-size hashmap that works with primitive Python data types using separate chaining.
+A fixed-size hashmap using only primitive Python data types.
 
 ## Basic
 An implementation of fixed-size hashmap based on Python primitive types, built-in hash function[1](#references), and separate chaining -- heavily inspired by MIT opencourseware[2](#references) and Java's Hashmap implementation[3](#references).
