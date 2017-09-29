@@ -1,4 +1,4 @@
-from types import *
+from __future__ import division
 
 class Hashmap(object):
 
@@ -48,4 +48,4 @@ class Hashmap(object):
         return value
 
     def load(self):
-        return float(self.count) / self.capacity
+        return self.count / self.capacity
