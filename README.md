@@ -2,9 +2,9 @@
 A fixed-size hashmap that works with primitive Python data types using separate chaining.
 
 ## Basic
-An implementation of fixed-size hashmap based on Python primitive types, built-in hash function[1](#References), and separate chaining -- heavily inspired by MIT opencourseware[2](#References) and Java's Hashmap implementation[3](#References).
+An implementation of fixed-size hashmap based on Python primitive types, built-in hash function[1](#references), and separate chaining -- heavily inspired by MIT opencourseware[2](#references) and Java's Hashmap implementation[3](#references).
 
-The internal data structure carrying the information of the _Hashmap_ is an array varialbe called _table_. _Hashmap_ prehashes argument _key_ given by user with Python's built-in hash function[1](#References) into an numeric value. It then hashes this value using a simple hash function (see below) to get the _idx_ of the slot to be inserted into _table_. _table_ has length equals to _capacity_.
+The internal data structure carrying the information of the _Hashmap_ is an array varialbe called _table_. _Hashmap_ prehashes argument _key_ given by user with Python's built-in hash function[1](#references) into an numeric value. It then hashes this value using a simple hash function (see below) to get the _idx_ of the slot to be inserted into _table_. _table_ has length equals to _capacity_.
 
 ### Sizing
 The _capacity_ of the hashmap is determined using the user-passed-in argument _size_. More specifically, _capacity_ is the smallest power of 2 that is bigger than or equal to _size_.
@@ -12,7 +12,7 @@ The _capacity_ of the hashmap is determined using the user-passed-in argument _s
 Such implementation avoids initiating unnecessarily large _table_. Meantime it controls the collision rate to make search faster.
 
 ### Hashing and Chaining
-Prehashing is done using Python's built-in hash function[1](#References) to convert string _key_ to integer. _Hashmap_ then convert this integer to the final hash value _idx_ by `integer_value mod capacity`. _idx_ is used later-on to insert the (_key_, _value_) pair to _table_.
+Prehashing is done using Python's built-in hash function[1](#references) to convert string _key_ to integer. _Hashmap_ then convert this integer to the final hash value _idx_ by `integer_value mod capacity`. _idx_ is used later-on to insert the (_key_, _value_) pair to _table_.
 
 We use separate chaining to solve collision. When _key_ *foo* and "foo3* collide with each other, we append *foo3* to the list where *foo* was inserted to. _table_ maintains _capcity_ number of such lists.
 
