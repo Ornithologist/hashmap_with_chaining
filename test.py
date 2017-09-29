@@ -1,3 +1,5 @@
+from __future__ import division
+
 import unittest2
 from hashmap import Hashmap
 
@@ -21,7 +23,7 @@ class Test(unittest2.TestCase):
         self.assertTrue(my_hash_table.set("foo", "bar"))
         # test second call of set
         self.assertTrue(my_hash_table.set("foo2", "bar2"))
-        # test for collision with "foo"
+        # test for collision with "foo" on 64bit system
         self.assertTrue(my_hash_table.set("foo3", "bar3"))
         # test size check
         self.assertFalse(my_hash_table.set("foo4", "bar4"))
@@ -33,12 +35,12 @@ class Test(unittest2.TestCase):
         my_hash_table.set("foo2", 2)
         my_hash_table.set("foo3", 3)
         # test non-existing key
-        self.assertIsNone("foo4")
+        self.assertIsNone(my_hash_table.get("foo4"))
         # test first get
         self.assertEqual(my_hash_table.get("foo"), "bar")
         # test second get
         self.assertEqual(my_hash_table.get("foo2"), 2)
-        # test thrid get with collision key
+        # test thrid get with collision key on 64bit system
         self.assertEqual(my_hash_table.get("foo3"), 3)
         return True
 

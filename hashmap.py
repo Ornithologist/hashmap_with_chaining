@@ -62,13 +62,13 @@ class Hashmap(object):
         bucket_idx, node_idx = self.__search(key)
         if node_idx is None:
             return None
-        return self.table[bucket_idx][node_idx]
+        return self.table[bucket_idx][node_idx][1]
 
     def delete(self, key):
         bucket_idx, node_idx = self.__search(key)
         if node_idx is None:
             return None
-        value = self.table[bucket_idx][node_idx]
+        value = self.table[bucket_idx][node_idx][1]
         del self.table[bucket_idx][node_idx]
         self.count -= 1
         return value
