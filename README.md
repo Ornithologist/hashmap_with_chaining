@@ -63,7 +63,7 @@ make check
 , or simply type ```make``` to run the test script.
 
 ## Limitation
-Depending on the system, the collision of keys may vary. For example, on 64-bit system, when _size_ is 3, "foo" and "foo3" collides. As a potential improvement, the prehashing step described in __idx__ of [hashmap.py](https://github.com/Ornithologist/hashmap_with_chaining/blob/master/hashmap.py) may change to other hashing mechanism.
+Depending on the system, the collision of keys may vary. For example, on 64-bit system, when _size_ is 3, "foo" and "foo3" collides. As a potential improvement, the prehashing step described in the "__idx__" function of [hashmap.py](https://github.com/Ornithologist/hashmap_with_chaining/blob/master/hashmap.py) may change to other hashing mechanism.
 
 This implementation is done with fixed-size hashmap in mind. In the situation where fixed-size is no longer a hard requirement, we can further improve the search performance of this _Hashmap_ by using open addressing. However, user needs to specify a _load_factor_ argument to prevent clustering.
 

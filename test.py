@@ -18,9 +18,15 @@ class Test(unittest2.TestCase):
                          "size must be a positive integer.")
 
     def test_set(self):
-        # test single call of set
         my_hash_table = Hashmap(3)
+        # test single call of set        
         self.assertTrue(my_hash_table.set("foo", "bar"))
+        # test erroneous set
+        with self.assertRaises(TypeError) as cm:
+            my_hash_table.set(123, 123)
+
+        self.assertEqual(cm.exception.message,
+                         "key must be a string.")
         # test second call of set
         self.assertTrue(my_hash_table.set("foo2", "bar2"))
         # test for collision with "foo" on 64bit system
